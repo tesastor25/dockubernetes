@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: go-ingress
+  #namespace: production
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  # Use the host you used in your kubernetes Ingress Configurations
+  - host: go.danabuatbelajar.xyz
+    http:
+      paths: 
+      - path: /
+        pathType: Prefix
+        backend:
+          service: 
+            name: go
+            port: 
+              number: 8081
